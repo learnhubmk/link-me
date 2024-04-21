@@ -1,0 +1,1 @@
+<div class="container p-6 mx-auto text-center bg-yellow-100 rounded mt-12 text-black">This is typical container</div>
