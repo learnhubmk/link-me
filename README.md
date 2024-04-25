@@ -4,4 +4,4 @@ LinkeMe is a website solution for centralized indexing, discovery of all kinds o
 
 The goal is to facilitate networking by hobby and interests, strengthen our social circles and to easily find communities and people on the same frequency as ours.
 
-The project is being developed in cooperation with (42.mk)[42.mk].
+The project is being developed in cooperation with [42.mk](https://42.mk).
