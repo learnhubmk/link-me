@@ -379,21 +379,20 @@ export interface ApiCommunityCommunity extends Schema.CollectionType {
     };
   };
   attributes: {
-    Name: Attribute.String &
+    name: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Attribute.DefaultTo<'linkme-'>;
-    Description: Attribute.Text &
+      }>;
+    description: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Platform: Attribute.Enumeration<['online', 'offline']> &
+    platform: Attribute.Enumeration<['online', 'offline']> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -401,26 +400,14 @@ export interface ApiCommunityCommunity extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<'online'>;
-    CommunityID: Attribute.UID<'api::community.community', 'Name'> &
+    community_id: Attribute.UID<'api::community.community', 'name'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    testUID: Attribute.UID &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    MemberCount: Attribute.BigInteger &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    IsActive: Attribute.Boolean &
+    is_active: Attribute.Boolean &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -428,14 +415,32 @@ export interface ApiCommunityCommunity extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<true>;
-    submittedBy: Attribute.Relation<
+    submitted_at: Attribute.DateTime &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    approved_by: Attribute.Relation<
       'api::community.community',
-      'manyToOne',
+      'oneToOne',
       'plugin::users-permissions.user'
     >;
+    approved_at: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     members: Attribute.Relation<
       'api::community.community',
       'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    submitted_by: Attribute.Relation<
+      'api::community.community',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
@@ -823,14 +828,14 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    submittedCommunities: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::community.community'
-    >;
-    joinedCommunities: Attribute.Relation<
+    joined_communities: Attribute.Relation<
       'plugin::users-permissions.user',
       'manyToMany',
+      'api::community.community'
+    >;
+    submitted_communities: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
       'api::community.community'
     >;
     createdAt: Attribute.DateTime;

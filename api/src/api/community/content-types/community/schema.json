@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "Name": {
+    "name": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,9 +24,9 @@
       },
       "type": "string",
       "required": true,
-      "default": "linkme-"
+      "unique": false
     },
-    "Description": {
+    "description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -34,7 +34,7 @@
       },
       "type": "text"
     },
-    "Platform": {
+    "platform": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -48,7 +48,7 @@
       "default": "online",
       "required": true
     },
-    "CommunityID": {
+    "community_id": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -56,25 +56,9 @@
       },
       "type": "uid",
       "required": true,
-      "targetField": "Name"
+      "targetField": "name"
     },
-    "testUID": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "uid"
-    },
-    "MemberCount": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "biginteger"
-    },
-    "IsActive": {
+    "is_active": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -84,17 +68,39 @@
       "default": true,
       "required": true
     },
-    "submittedBy": {
+    "submitted_at": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "datetime",
+      "required": true
+    },
+    "approved_by": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "submittedCommunities"
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "approved_at": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "datetime"
     },
     "members": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
-      "mappedBy": "joinedCommunities"
+      "mappedBy": "joined_communities"
+    },
+    "submitted_by": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "submitted_communities"
     }
   }
 }

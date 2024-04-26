@@ -65,17 +65,17 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "submittedCommunities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::community.community",
-      "mappedBy": "submittedBy"
-    },
-    "joinedCommunities": {
+    "joined_communities": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::community.community",
       "inversedBy": "members"
+    },
+    "submitted_communities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::community.community",
+      "mappedBy": "submitted_by"
     }
   }
 }
