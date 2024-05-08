@@ -24,7 +24,8 @@ In the main [package.json](package.json) you can find the following commands:
 - `auto-install` - installs the dependencies for `api` and `app`
 - `auto-build` - builds the production ready environments for `api` and `app`
 - `auto-develop` - starts `api` and `app` in developer mode
-
+You can run the commands in command prompt `npm run {command}`.
+- 
 Note: For `api`, you still have to manually create an `.env` file based on [.env.example](./api/.env.example)
 
 ## Manual
