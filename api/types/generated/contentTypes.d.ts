@@ -385,6 +385,9 @@ export interface ApiCommunityCommunity extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
       }>;
     description: Attribute.Text &
       Attribute.SetPluginOptions<{
@@ -400,13 +403,6 @@ export interface ApiCommunityCommunity extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<'online'>;
-    community_id: Attribute.UID<'api::community.community', 'name'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     is_active: Attribute.Boolean &
       Attribute.Required &
       Attribute.SetPluginOptions<{
