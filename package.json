@@ -1,0 +1,12 @@
+{
+  "name": "link-me",
+  "version": "1.0.0",
+  "description": "LinkeMe is a website solution for centralized indexing, discovery of all kinds of NGOs, initiatives, communities, forums and Facebook/Viber/Telegram/Whatsapp groups, physical as well as online/virtual.",
+  "scripts": {
+    "auto-install": "start cmd.exe /k \"npm --prefix ./api install\" && start cmd.exe /k \"npm --prefix ./app install",
+    "auto-build": "start cmd.exe /k \"npm --prefix ./api run build\" && start cmd.exe /k \"npm --prefix ./app run build",
+    "auto-develop": "start cmd.exe /k \"npm --prefix ./api run develop\" && start cmd.exe /k \"npm --prefix ./app run dev\""
+  },
+  "author": "",
+  "license": "ISC"
+}
