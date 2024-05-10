@@ -49,16 +49,6 @@
       "default": "online",
       "required": true
     },
-    "community_id": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "uid",
-      "required": true,
-      "targetField": "name"
-    },
     "is_active": {
       "pluginOptions": {
         "i18n": {
