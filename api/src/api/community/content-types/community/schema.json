@@ -24,7 +24,8 @@
       },
       "type": "string",
       "required": true,
-      "unique": false
+      "unique": false,
+      "minLength": 2
     },
     "description": {
       "pluginOptions": {
