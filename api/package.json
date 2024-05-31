@@ -9,13 +9,13 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.23.1",
-    "@strapi/plugin-users-permissions": "4.23.1",
-    "@strapi/plugin-i18n": "4.23.1",
     "@strapi/plugin-cloud": "4.23.1",
+    "@strapi/plugin-i18n": "4.23.1",
+    "@strapi/plugin-users-permissions": "4.23.1",
+    "@strapi/strapi": "4.23.1",
     "better-sqlite3": "8.6.0",
+    "link-me": "file:..",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
