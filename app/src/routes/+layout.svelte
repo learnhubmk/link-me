@@ -22,7 +22,7 @@
 		<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
 			Topics
 		</a>
-		<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
+		<a href="/communities" class="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
 			Communities
 		</a>
 		<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4">
