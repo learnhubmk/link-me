@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinkMe.Infrastructure.Migrations
 {
     [DbContext(typeof(LinkMeDbContext))]
-    [Migration("20240613191946_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240613193236_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

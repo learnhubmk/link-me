@@ -32,7 +32,7 @@ namespace LinkMe.Api
 
             //builder.Services.AddDbContext<LinkMeDbContext>(options => options.UseSqlite(connection));
 
-            builder.Services.AddDbContext<LinkMeDbContext>(options => options.UseSqlServer("server=(local)\\SQLExpress;database=linkme;integrated Security=SSPI"));
+            builder.Services.AddDbContext<LinkMeDbContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=LinkMe;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
