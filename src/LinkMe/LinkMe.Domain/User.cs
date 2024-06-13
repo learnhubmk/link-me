@@ -4,6 +4,8 @@ namespace LinkMe.Domain
 {
     public class User : IdentityUser
     {
-        public string Name { get; set;}
+        public string Name { get; set; }
+
+        public ICollection<Review> ReviewsLeft { get; set; }
     }
 }

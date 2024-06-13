@@ -6,9 +6,9 @@ namespace LinkMe.Infrastructure
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : DomainEntity
     {
-        private readonly DbContext _dbContext;
+        private readonly LinkMeDbContext _dbContext;
 
-        public BaseRepository(DbContext dbContext)
+        public BaseRepository(LinkMeDbContext dbContext)
         {
             _dbContext = dbContext;
         }
