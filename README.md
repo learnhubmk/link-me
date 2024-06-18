@@ -18,8 +18,11 @@ link-me
 ```
 
 # Setup
+Make a copy of appsettings.json, name it appsettings.Development.json and customize your local development solution as per your liking (this file is ignored by git and will not affect other devs).
+
 ## Auto
 
+[Obsolete]
 In the main [package.json](package.json) you can find the following commands:
 - `auto-install` - installs the dependencies for `api` and `app`
 - `auto-build` - builds the production ready environments for `api` and `app`
@@ -38,7 +41,7 @@ Databases:
 1.2. SqlServer (Production)
 
 
-To add new SQL migration via Entity Framework, navigate to src/LinkMe and execute the following commands in .net cli:
+To add new SQL migration via Entity Framework, navigate to src/LinkMe and execute the following commands in .net cli via Powershell or Developer Powershell in Visual Studio:
 dotnet ef migrations add {MigrationName} --context LinkMeSqliteDbContext --project LinkMe.Infrastructure.Sqlite
 dotnet ef migrations add {MigrationName} --context LinkMeSqlServerDbContext --project LinkMe.Infrastructure.SqlServer
 

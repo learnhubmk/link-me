@@ -21,10 +21,10 @@ namespace LinkMe.ApplicationServices
                 _repository = repository;
             }
 
-            public void Handle(Command command)
+            public Community Handle(Command command)
             {
                 var community = new Community { Name = command.Name, Description = command.Description };
-                _repository.Add(community);
+                return _repository.Add(community);
             }
         }
     }

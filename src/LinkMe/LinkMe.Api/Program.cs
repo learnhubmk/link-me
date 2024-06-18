@@ -1,4 +1,7 @@
 
+using LinkMe.ApplicationServices;
+using LinkMe.Domain.Contracts;
+using LinkMe.Infrastructure;
 using LinkMe.Infrastructure.Mapping;
 using LinkMe.Infrastructure.Sqlite;
 using LinkMe.Infrastructure.SqlServer;
@@ -46,6 +49,10 @@ namespace LinkMe.Api
             }
             else
                 builder.Services.AddDbContext<LinkMeDbContext, LinkMeSqlServerDbContext>();
+
+            builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            builder.Services.AddScoped<CreateCommunity.Handler>();
+            
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
