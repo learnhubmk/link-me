@@ -1,8 +1,13 @@
 
 using LinkMe.Infrastructure.Mapping;
+using LinkMe.Infrastructure.Sqlite;
+using LinkMe.Infrastructure.SqlServer;
 
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -14,25 +19,33 @@ namespace LinkMe.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-//            builder.Services.AddDbContext<Infrastructure.Mapping.LinkMeDbContext>(options =>
-//options.UseSqlite(builder.Configuration.GetConnectionString(@$"data source=D:\Projects\GitHub\Learnhub\link-me\src\LinkMe\linkme.db")));
-            //string id = "data source=D:\\Projects\\GitHub\\Learnhub\\link-me\\src\\LinkMe\\linkme.db";
+            //Add services to the container.
 
-            //var sqlitebuilder = new SqliteConnectionStringBuilder()
-            //{
-            //    DataSource = id,
-            //    Mode = SqliteOpenMode.Memory,
-            //    Cache = SqliteCacheMode.Shared
-            //};
+            if (builder.Environment.IsDevelopment())
+            {
+                var configuration = builder.Configuration;
 
-            //var connection = new SqliteConnection(sqlitebuilder.ConnectionString);
-            //connection.Open();
-            //connection.EnableExtensions(true);
+                var provider = configuration.GetValue("Provider", "Sqlite");
 
-            //builder.Services.AddDbContext<LinkMeDbContext>(options => options.UseSqlite(connection));
+                string connectionString;
+                switch (provider)
+                {
+                    case "Sqlite":
+                        connectionString = configuration.GetValue("SqliteConnection", "Data Source=linkme.db");
+                        builder.Services.AddDbContext<LinkMeDbContext, LinkMeSqliteDbContext>();
+                        break;
+                    case "SqlServer":
+                        connectionString = configuration.GetValue("SqlServerConnection", "Data Source=.\\SQLExpress;Initial Catalog=LinkMe;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                        builder.Services.AddDbContext<LinkMeDbContext, LinkMeSqlServerDbContext>();
+                        break;
+                    default:
+                        throw new ArgumentException($"Unsupported provider: {provider}");
+                }
 
-            builder.Services.AddDbContext<LinkMeDbContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=LinkMe;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
+                Environment.SetEnvironmentVariable("SqlConnection", connectionString);
+            }
+            else
+                builder.Services.AddDbContext<LinkMeDbContext, LinkMeSqlServerDbContext>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,12 +54,18 @@ namespace LinkMe.Api
 
             var app = builder.Build();
 
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+
+                using var serviceScope = app.Services.CreateScope();
+                var context = serviceScope.ServiceProvider.GetRequiredService<LinkMeDbContext>();
+                context.Database.Migrate(); // TODO apply migrations on production in build pipeline
             }
+
 
             app.UseHttpsRedirection();
 

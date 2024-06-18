@@ -11,7 +11,7 @@ The project is being developed in cooperation with [42.mk](https://42.mk).
 ```
 link-me
 │   package.json    
-└───api (strapi)
+└───api (dotnet)
 │   │   package.json
 └───app (svelte)
     │   package.json
@@ -29,11 +29,20 @@ You can run the commands in command prompt `npm run {command}`.
 Note: For `api`, you still have to manually create an `.env` file based on [.env.example](./api/.env.example)
 
 ## Manual
-### API (Strapi)
-1. Navigate to `api`
-2. Run `npm install`
-3. Create an `.env` file based on [.env.example](./api/.env.example)
-4. Run `npm run develop`
+### API (.NET)
+
+1. Data Layer
+ORM: Entity Framework 
+Databases:
+1.1. Sqlite (Development)
+1.2. SqlServer (Production)
+
+
+To add new SQL migration via Entity Framework, navigate to src/LinkMe and execute the following commands in .net cli:
+dotnet ef migrations add {MigrationName} --context LinkMeSqliteDbContext --project LinkMe.Infrastructure.Sqlite
+dotnet ef migrations add {MigrationName} --context LinkMeSqlServerDbContext --project LinkMe.Infrastructure.SqlServer
+
+Pending migrations are applied on app start.
 
 ### APP (Svelte)
 1. Navigate to `app`

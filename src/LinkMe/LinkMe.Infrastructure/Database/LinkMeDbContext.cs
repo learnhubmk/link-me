@@ -9,6 +9,7 @@ namespace LinkMe.Infrastructure.Mapping
     {
         public LinkMeDbContext()
         {
+                
         }
 
         public LinkMeDbContext(DbContextOptions<LinkMeDbContext> dbContextOptions) : base(dbContextOptions)
