@@ -1,9 +1,8 @@
 ﻿using LinkMe.Domain;
-
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace LinkMe.Infrastructure.Mapping
+namespace LinkMe.Infrastructure.Database
 {
     public class LinkMeDbContext : IdentityDbContext<User>
     {

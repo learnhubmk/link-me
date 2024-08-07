@@ -1,5 +1,4 @@
-﻿using LinkMe.Infrastructure.Mapping;
-
+﻿using LinkMe.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkMe.Infrastructure.SqlServer

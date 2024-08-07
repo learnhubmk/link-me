@@ -1,6 +1,6 @@
 ﻿using LinkMe.Domain;
 using LinkMe.Domain.Contracts;
-using LinkMe.Infrastructure.Mapping;
+using LinkMe.Infrastructure.Database;
 
 namespace LinkMe.Infrastructure
 {

@@ -2,7 +2,7 @@
 using LinkMe.ApplicationServices;
 using LinkMe.Domain.Contracts;
 using LinkMe.Infrastructure;
-using LinkMe.Infrastructure.Mapping;
+using LinkMe.Infrastructure.Database;
 using LinkMe.Infrastructure.Sqlite;
 using LinkMe.Infrastructure.SqlServer;
 
