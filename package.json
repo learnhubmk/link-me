@@ -5,7 +5,7 @@
   "scripts": {
     "auto-install": "start cmd.exe /k \"npm --prefix ./api install\" && start cmd.exe /k \"npm --prefix ./app install",
     "auto-build": "start cmd.exe /k \"npm --prefix ./api run build\" && start cmd.exe /k \"npm --prefix ./app run build",
-    "auto-develop": "start cmd.exe /k \"npm --prefix ./api run develop\" && start cmd.exe /k \"npm --prefix ./app run dev\""
+    "auto-develop": "start http://localhost:1337/admin && start cmd.exe /k \"npm --prefix ./api run develop\" && start http://localhost:5173 &&  start cmd.exe /k \"npm --prefix ./app run dev\""
   },
   "author": "",
   "license": "ISC"

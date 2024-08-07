@@ -3,3 +3,8 @@
 node_modules
 package-lock.json
 yarn.lock
+/.vs
+/src/LinkMe/LinkMe.Api/appsettings.Development.json
+/src/LinkMe/LinkMe.Api/linkme.db
+/src/LinkMe/LinkMe.Api/linkme.db-shm
+/src/LinkMe/LinkMe.Api/linkme.db-wal
