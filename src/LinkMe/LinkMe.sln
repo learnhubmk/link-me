@@ -15,9 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{C030C1E1-F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkMe.ApplicationServices", "LinkMe.ApplicationServices\LinkMe.ApplicationServices.csproj", "{C0CE907E-54FD-4CA6-B379-23134DEBC0EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkMe.Infrastructure.Sqlite", "LinkMe.Infrastructure.Sqlite\LinkMe.Infrastructure.Sqlite.csproj", "{D9739892-1082-4714-A81E-2D99AB28134D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkMe.Infrastructure.Sqlite", "LinkMe.Infrastructure.Sqlite\LinkMe.Infrastructure.Sqlite.csproj", "{D9739892-1082-4714-A81E-2D99AB28134D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkMe.Infrastructure.SqlServer", "LinkMe.Infrastructure.SqlServer\LinkMe.Infrastructure.SqlServer.csproj", "{CDD349CC-B7C0-40CD-AE69-C2398CB31DA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkMe.Infrastructure.SqlServer", "LinkMe.Infrastructure.SqlServer\LinkMe.Infrastructure.SqlServer.csproj", "{CDD349CC-B7C0-40CD-AE69-C2398CB31DA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FF07EE0E-7140-4398-A94C-B14117492853}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkMe.Architecture.Tests", "LinkMe.Architecture.Tests\LinkMe.Architecture.Tests.csproj", "{C5347917-E6BE-45B9-93D9-5D05E70AFDB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{CDD349CC-B7C0-40CD-AE69-C2398CB31DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD349CC-B7C0-40CD-AE69-C2398CB31DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDD349CC-B7C0-40CD-AE69-C2398CB31DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5347917-E6BE-45B9-93D9-5D05E70AFDB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5347917-E6BE-45B9-93D9-5D05E70AFDB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5347917-E6BE-45B9-93D9-5D05E70AFDB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5347917-E6BE-45B9-93D9-5D05E70AFDB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +70,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{77264D2B-691E-4D29-825E-EDC687C858E4} = {C030C1E1-F2C0-489E-B167-8EA87C363D48}
 		{C43FD5A4-CBF4-458A-B1E6-7B18A8030C59} = {C030C1E1-F2C0-489E-B167-8EA87C363D48}
+		{C5347917-E6BE-45B9-93D9-5D05E70AFDB6} = {FF07EE0E-7140-4398-A94C-B14117492853}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA4BB6F6-569A-47EB-AB7F-5178ED32B1A4}
