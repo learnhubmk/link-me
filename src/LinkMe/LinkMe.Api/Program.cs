@@ -1,18 +1,13 @@
 
 using LinkMe.ApplicationServices;
+using LinkMe.ApplicationServices.Communities;
 using LinkMe.Domain.Contracts;
 using LinkMe.Infrastructure;
 using LinkMe.Infrastructure.Database;
 using LinkMe.Infrastructure.Sqlite;
 using LinkMe.Infrastructure.SqlServer;
 
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LinkMe.Api
 {
@@ -21,7 +16,8 @@ namespace LinkMe.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddMediatR(configuration=>configuration.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+            builder.Services.AddMediatR(configuration=>configuration.RegisterServicesFromAssembly(typeof(RegisterCommunity).Assembly));
 
             //Add services to the container.
 
@@ -52,8 +48,6 @@ namespace LinkMe.Api
                 builder.Services.AddDbContext<LinkMeDbContext, LinkMeSqlServerDbContext>();
 
             builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            builder.Services.AddScoped<CreateCommunity.Handler>();
-            
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

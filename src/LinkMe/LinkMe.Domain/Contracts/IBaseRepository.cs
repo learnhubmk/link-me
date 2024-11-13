@@ -4,7 +4,7 @@
     {
         T Get(int id);
         //ICollection<T> GetMany(int id);
-        T Add(T item);
+        Task<T> AddAsync(T item);
         T Update(T item);
         void Delete(T item);
     }

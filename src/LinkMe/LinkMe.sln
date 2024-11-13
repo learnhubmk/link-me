@@ -12,9 +12,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkMe.Infrastructure", "LinkMe.Infrastructure\LinkMe.Infrastructure.csproj", "{3252C2B1-A35B-48FD-BFBA-B957B169CC5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{C030C1E1-F2C0-489E-B167-8EA87C363D48}"
-	ProjectSection(SolutionItems) = preProject
-		RegisterCommunity.cs = RegisterCommunity.cs
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkMe.ApplicationServices", "LinkMe.ApplicationServices\LinkMe.ApplicationServices.csproj", "{C0CE907E-54FD-4CA6-B379-23134DEBC0EA}"
 EndProject
