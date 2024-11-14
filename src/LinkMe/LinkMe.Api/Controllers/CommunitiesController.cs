@@ -1,5 +1,7 @@
-﻿using LinkMe.ApplicationServices;
+﻿using LinkMe.ApplicationServices.Communities;
 using LinkMe.Domain;
+
+using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,19 +9,12 @@ namespace LinkMe.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CommunitiesController: ControllerBase
+
+    
+    public class CommunitiesController(ISender sender) : ControllerBase
     {
-        private readonly CreateCommunity.Handler _createCommunityHandler;
-
-        public CommunitiesController(CreateCommunity.Handler createCommunityHandler)
-        {
-            _createCommunityHandler = createCommunityHandler;
-        }
-
         [HttpPost]
-        public Community RegisterCommunity(CreateCommunity.Command community)
-        {
-            return _createCommunityHandler.Handle(community);
-        }
+        public async Task<Community> RegisterCommunity(RegisterCommunity.Request request) => 
+            await sender.Send(request);
     }
 }

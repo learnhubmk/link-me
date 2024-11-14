@@ -13,10 +13,10 @@ namespace LinkMe.Infrastructure
             _dbContext = dbContext;
         }
 
-        public T Add(T item)
+        public async Task<T> AddAsync(T item)
         {
             var entity = _dbContext.Add(item).Entity;
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             return entity;
         }
 
