@@ -1,6 +1,6 @@
 @LinkMe.Api_HostAddress = http://localhost:5143
 
-GET {{LinkMe.Api_HostAddress}}/weatherforecast/
+GET {{LinkMe.Api_HostAddress}}/communities/
 Accept: application/json
 
 ###
