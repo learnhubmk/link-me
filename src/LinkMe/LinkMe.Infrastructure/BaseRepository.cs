@@ -1,6 +1,7 @@
 ﻿using LinkMe.Domain;
 using LinkMe.Domain.Contracts;
 using LinkMe.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace LinkMe.Infrastructure
 {
@@ -26,9 +27,9 @@ namespace LinkMe.Infrastructure
             _dbContext.SaveChanges();
         }
 
-        public T Get(int id)
+        public async Task<T> GetAsync(int id)
         {
-            return _dbContext.Set<T>().FirstOrDefault(x => x.Id == id);
+            return await _dbContext.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public T Update(T item)
