@@ -1,6 +1,7 @@
 
 using LinkMe.ApplicationServices;
 using LinkMe.ApplicationServices.Communities;
+using LinkMe.Domain;
 using LinkMe.Domain.Contracts;
 using LinkMe.Infrastructure;
 using LinkMe.Infrastructure.Database;
@@ -8,6 +9,7 @@ using LinkMe.Infrastructure.Sqlite;
 using LinkMe.Infrastructure.SqlServer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -32,14 +34,16 @@ namespace LinkMe.Api
                 var provider = configuration.GetValue("Provider", "Sqlite");
 
                 string connectionString;
+
                 switch (provider)
                 {
                     case "Sqlite":
-                        connectionString = configuration.GetValue("SqliteConnection", "Data Source=linkme.db");
+                        connectionString = configuration.GetConnectionString("SqliteConnection")?? throw new InvalidOperationException("SqliteConnection");
                         builder.Services.AddDbContext<LinkMeDbContext, LinkMeSqliteDbContext>();
                         break;
                     case "SqlServer":
-                        connectionString = configuration.GetValue("SqlServerConnection", "Data Source=.\\SQLExpress;Initial Catalog=LinkMe;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                        connectionString = configuration.GetConnectionString("SqlServerConnection")?? throw new InvalidOperationException("SqlServerConnection");
+
                         builder.Services.AddDbContext<LinkMeDbContext, LinkMeSqlServerDbContext>();
                         break;
                     default:
@@ -57,20 +61,17 @@ namespace LinkMe.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
-
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+           
+          
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireDigit = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
-            })
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
-
+            }).AddEntityFrameworkStores<LinkMeDbContext>()
+.AddDefaultTokenProviders();
 
 
             builder.Services.AddAuthentication(options =>

@@ -1,4 +1,5 @@
 ﻿using LinkMe.Api.Model;
+using LinkMe.Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +17,11 @@ namespace LinkMe.Api.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
 
-        public AccountController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public AccountController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -30,7 +31,12 @@ namespace LinkMe.Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] Register model)
         {
-            var user = new IdentityUser { UserName = model.Username, Email = model.Email };
+            var user = new User
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                Name = model.Name // Ensure the Name property is set
+            };
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)

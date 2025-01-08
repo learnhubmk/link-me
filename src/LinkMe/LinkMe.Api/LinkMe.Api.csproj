@@ -14,6 +14,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
   </ItemGroup>
 
@@ -22,6 +27,10 @@
     <ProjectReference Include="..\LinkMe.Infrastructure.Sqlite\LinkMe.Infrastructure.Sqlite.csproj" />
     <ProjectReference Include="..\LinkMe.Infrastructure.SqlServer\LinkMe.Infrastructure.SqlServer.csproj" />
     <ProjectReference Include="..\LinkMe.Infrastructure\LinkMe.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>
