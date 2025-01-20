@@ -1,4 +1,5 @@
 ﻿using LinkMe.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,8 +18,9 @@ namespace LinkMe.Infrastructure.Database
 
         public DbSet<Member> Members { get; set; }
         public DbSet<Moderator> Moderators { get; set; }
-        
+
         // TODO Add admins
+        
         //public DbSet<Administrator> Administrators { get; set; }
 
         public DbSet<Review> Reviews { get; set; }
