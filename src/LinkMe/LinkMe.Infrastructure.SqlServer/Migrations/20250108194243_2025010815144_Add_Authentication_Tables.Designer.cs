@@ -4,6 +4,7 @@ using LinkMe.Infrastructure.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinkMe.Infrastructure.SqlServer.Migrations
 {
     [DbContext(typeof(LinkMeSqlServerDbContext))]
-    partial class LinkMeSqlServerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250108194243_2025010815144_Add_Authentication_Tables")]
+    partial class _2025010815144_Add_Authentication_Tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

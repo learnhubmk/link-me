@@ -1,53 +1,50 @@
-# LinkMe - Strengthening your social circles
+# React + TypeScript + Vite
 
-LinkeMe is a website solution for centralized indexing, discovery of all kinds of NGOs, initiatives, communities, forums and Facebook/Viber/Telegram/Whatsapp groups, physical as well as online/virtual.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-The goal is to facilitate networking by hobby and interests, strengthen our social circles and to easily find communities and people on the same frequency as ours.
+Currently, two official plugins are available:
 
-The project is being developed in cooperation with [42.mk](https://42.mk).
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-# Structure
+## Expanding the ESLint configuration
 
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+
+- Configure the top-level `parserOptions` property like this:
+
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
-link-me
-│   package.json    
-└───api (dotnet)
-│   │   package.json
-└───app (svelte)
-    │   package.json
+
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
-
-# Setup
-Make a copy of appsettings.json, name it appsettings.Development.json and customize your local development solution as per your liking (this file is ignored by git and will not affect other devs).
-
-## Auto
-
-[Obsolete]
-In the main [package.json](package.json) you can find the following commands:
-- `auto-install` - installs the dependencies for `api` and `app`
-- `auto-build` - builds the production ready environments for `api` and `app`
-- `auto-develop` - starts `api` and `app` in developer mode
-You can run the commands in command prompt `npm run {command}`.
-- 
-Note: For `api`, you still have to manually create an `.env` file based on [.env.example](./api/.env.example)
-
-## Manual
-### API (.NET)
-
-1. Data Layer
-ORM: Entity Framework 
-Databases:
-1.1. Sqlite (Development)
-1.2. SqlServer (Production)
-
-
-To add new SQL migration via Entity Framework, navigate to src/LinkMe and execute the following commands in .net cli via Powershell or Developer Powershell in Visual Studio:
-dotnet ef migrations add {MigrationName} --context LinkMeSqliteDbContext --project LinkMe.Infrastructure.Sqlite
-dotnet ef migrations add {MigrationName} --context LinkMeSqlServerDbContext --project LinkMe.Infrastructure.SqlServer
-
-Pending migrations are applied on app start.
-
-### APP (Svelte)
-1. Navigate to `app`
-2. Run `npm install`
-3. Run `npm run dev`
